@@ -1,0 +1,5 @@
+com/cgm/consoleexercise/ConsoleExerciseApplication.class
+com/cgm/consoleexercise/domain/model/Question.class
+com/cgm/consoleexercise/domain/model/Answer.class
+com/cgm/consoleexercise/repository/AnswerRepository.class
+com/cgm/consoleexercise/repository/QuestionRepository.class

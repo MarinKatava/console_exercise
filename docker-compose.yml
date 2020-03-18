@@ -1,0 +1,23 @@
+version:  '3.0'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'test_db'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'secret'
+      MYSQL_ROOT_PASSWORD: 'secret'
+    container_name: mysqltest
+    ports:
+      - '33062:3306'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: testphpmyadmin
+    links:
+      - db:db
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
