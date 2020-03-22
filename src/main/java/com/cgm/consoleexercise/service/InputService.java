@@ -1,9 +1,7 @@
-package com.cgm.consoleexercise;
+package com.cgm.consoleexercise.service;
 
 import com.cgm.consoleexercise.domain.builder.QuestionBuilder;
 import com.cgm.consoleexercise.domain.model.Question;
-import com.cgm.consoleexercise.service.AnswerService;
-import com.cgm.consoleexercise.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

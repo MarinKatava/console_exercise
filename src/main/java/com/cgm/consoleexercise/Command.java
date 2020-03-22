@@ -1,5 +1,6 @@
 package com.cgm.consoleexercise;
 
+import com.cgm.consoleexercise.service.InputService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
