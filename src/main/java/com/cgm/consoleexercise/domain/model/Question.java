@@ -7,7 +7,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,5 +25,6 @@ public class Question {
             fetch = FetchType.LAZY)
     @Fetch(FetchMode.JOIN)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
-    private List<Answer> answers;
+    @OrderBy(value = "id ASC")
+    private Set<Answer> answers;
 }

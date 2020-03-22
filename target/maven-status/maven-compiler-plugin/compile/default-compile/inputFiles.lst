@@ -1,5 +1,11 @@
+/home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/domain/builder/QuestionBuilder.java
 /home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/domain/model/Question.java
+/home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/Command.java
+/home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/domain/builder/AnswerBuilder.java
 /home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/repository/AnswerRepository.java
 /home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/ConsoleExerciseApplication.java
+/home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/service/QuestionService.java
+/home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/service/AnswerService.java
+/home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/Input.java
 /home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/domain/model/Answer.java
 /home/marin/Documents/console-exercise/src/main/java/com/cgm/consoleexercise/repository/QuestionRepository.java
