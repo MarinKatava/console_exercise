@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.InputMismatchException;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,6 +34,9 @@ public class AnswerBuilder {
         Matcher mat = pat.matcher(input);
         while (mat.find()) {
             this.answers.add(this.createNewAnswer().buildAnswer(mat.group(1)).getAnswer());
+        }
+        if (this.answers.size() == 0){
+            throw new InputMismatchException();
         }
         return this;
     }

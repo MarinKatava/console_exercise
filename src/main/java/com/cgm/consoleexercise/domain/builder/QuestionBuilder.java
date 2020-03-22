@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.InputMismatchException;
+
 @Getter
 @Setter
 @Accessors(chain = true)
@@ -22,7 +24,10 @@ public class QuestionBuilder {
             this.question.setAnswers(this.answerBuilder.setQuestion(this.question)
                     .buildAnswers(input.split("\\?")[1])
                     .getAnswers());
+        } else {
+            throw new InputMismatchException();
         }
+
         return this;
     }
 }

@@ -5,18 +5,16 @@ import com.cgm.consoleexercise.domain.model.Question;
 import com.cgm.consoleexercise.service.AnswerService;
 import com.cgm.consoleexercise.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class Input {
+@Service
+public class InputService {
     private QuestionService questionService;
     private AnswerService answerService;
-
-    boolean isActive = true;
     private Integer inputValue;
 
     @Autowired
-    public Input(QuestionService questionService, AnswerService answerService) {
+    public InputService(QuestionService questionService, AnswerService answerService) {
         this.questionService = questionService;
         this.answerService = answerService;
     }
