@@ -8,6 +8,7 @@ import com.cgm.consoleexercise.repository.QuestionRepository;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
@@ -26,11 +27,15 @@ public class QuestionService {
     }
 
     public void addQuestion(String input) {
-        this.questionRepository.save(this.questionBuilder
-                .setQuestion(new Question())
-                .setAnswerBuilder(new AnswerBuilder(new LinkedHashSet<>(), new Answer()))
-                .buildQuestion(input)
-                .getQuestion());
+        try {
+            this.questionRepository.save(this.questionBuilder
+                    .setQuestion(new Question())
+                    .setAnswerBuilder(new AnswerBuilder(new LinkedHashSet<>(), new Answer()))
+                    .buildQuestion(input)
+                    .getQuestion());
+        } catch (DataIntegrityViolationException e) {
+            System.out.println("This question is already stored in the database.");
+        }
     }
 
     public Question getQuestion(String input) {

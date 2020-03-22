@@ -18,7 +18,7 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(columnDefinition = "VARCHAR(255)")
+    @Column(columnDefinition = "VARCHAR(255)", unique = true)
     private String question;
 
     @OneToMany(mappedBy = "question",
