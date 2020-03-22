@@ -25,8 +25,8 @@ public class Command implements CommandLineRunner {
             System.out.println("Enter 2 to get the answers for your question. \n");
             Scanner scanner = new Scanner(System.in).useDelimiter("\n");
             try {
-                this.inputService.analyzeChoice(scanner.nextInt());
-                this.inputService.analyzeInput(scanner.next());
+                Integer inputChoice = this.inputService.analyzeChoice(scanner.nextInt());
+                this.inputService.analyzeInput(inputChoice, scanner.next());
             } catch (InputMismatchException e) {
                 System.out.println("Wrong input!");
             }
