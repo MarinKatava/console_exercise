@@ -42,6 +42,9 @@ public class AnswerBuilder {
     }
 
     private AnswerBuilder buildAnswer(String substring) {
+        if (substring.equals(" ")){
+            throw new InputMismatchException();
+        }
         this.answer.setAnswer(substring);
         this.answer.setQuestion(this.question);
         return this;
