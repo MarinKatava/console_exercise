@@ -21,7 +21,8 @@ public class QuestionBuilder {
     public QuestionBuilder buildQuestion(String input) {
         if (input.contains("?") && input.contains("\"")) {
             this.question.setQuestion(input.split("\\?")[0]);
-            this.question.setAnswers(this.answerBuilder.setQuestion(this.question)
+            this.question.setAnswers(
+                    this.answerBuilder.setQuestion(this.question)
                     .buildAnswers(input.split("\\?")[1])
                     .getAnswers());
         } else {

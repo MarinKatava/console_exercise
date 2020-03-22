@@ -30,14 +30,18 @@ public class AnswerBuilder {
     }
 
     public AnswerBuilder buildAnswers(String input) {
-        Pattern pat = Pattern.compile("\"([a-z\\s]{1,255})\"");
+        Pattern pat = Pattern.compile("\"([a-zA-Z0-9\\s]{1,255})\"");
         Matcher mat = pat.matcher(input);
         while (mat.find()) {
-            this.answers.add(this.createNewAnswer().buildAnswer(mat.group(1)).getAnswer());
+            this.answers.add(this.createNewAnswer()
+                    .buildAnswer(mat.group(1))
+                    .getAnswer());
         }
+//        Where is Linz?"In Austria""In upper Austria"
         if (this.answers.size() == 0){
             throw new InputMismatchException();
         }
+
         return this;
     }
 
