@@ -29,7 +29,6 @@ public class QuestionService {
     public void addQuestion(String input) {
         try {
             this.questionRepository.save(this.questionBuilder
-                    .setQuestion(new Question())
                     .setAnswerBuilder(new AnswerBuilder(new LinkedHashSet<>(), new Answer()))
                     .buildQuestion(input)
                     .getQuestion());
@@ -39,6 +38,6 @@ public class QuestionService {
     }
 
     public Question getQuestion(String input) {
-        return this.questionRepository.findByQuestionOrderById(input);
+        return this.questionRepository.findByQuestion(input);
     }
 }

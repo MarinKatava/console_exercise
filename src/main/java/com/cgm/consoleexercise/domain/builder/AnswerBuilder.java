@@ -44,7 +44,8 @@ public class AnswerBuilder {
         return this;
     }
 
-    private AnswerBuilder buildAnswer(String substring) {
+    private AnswerBuilder buildAnswer(String answer) {
+        String substring = answer.replaceAll("\"", "");
         if (substring.length() > 255) {
             throw new InputMismatchException();
         }

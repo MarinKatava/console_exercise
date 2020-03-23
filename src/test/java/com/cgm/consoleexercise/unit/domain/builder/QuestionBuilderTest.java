@@ -10,9 +10,10 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.InputMismatchException;
 import java.util.LinkedHashSet;
 
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(org.mockito.junit.MockitoJUnitRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -20,8 +21,6 @@ public class QuestionBuilderTest {
     private QuestionBuilder spy;
     private Question question;
     private QuestionBuilder questionBuilder;
-
-//    @Mock
     private AnswerBuilder answerBuilder;
 
     @Before
@@ -31,19 +30,34 @@ public class QuestionBuilderTest {
         this.questionBuilder = new QuestionBuilder(this.question);
         this.questionBuilder.setAnswerBuilder(this.answerBuilder);
         this.spy = Mockito.spy(this.questionBuilder);
-//        MockitoAnnotations.initMocks(this);
     }
 
     @Test
     public void buildQuestionWithQuestionMark(){
         String input = "Compu Group Medical?\"Austria\"";
-//        when(this.answerBuilder.setQuestion(any())).thenReturn(this.answerBuilder);
-//        when(this.answerBuilder.buildAnswers(anyString())).thenReturn(this.answerBuilder);
-//        when(this.answerBuilder.getAnswers()).thenReturn(new LinkedHashSet<>());
-
         this.spy.buildQuestion(input);
+        assertEquals(this.question.getQuestion(), input.split("\\?")[0]);
+    }
 
-        verify(this.question, times(1)).setQuestion(anyString());
+    @Test(expected = InputMismatchException.class)
+    public void buildQuestionWithoutQuestionMark(){
+        String input = "Compu Group Medical \"Austria\"";
+        this.spy.buildQuestion(input);
+    }
 
+    @Test(expected = InputMismatchException.class)
+    public void buildQuestionWithoutDoubleQuotes(){
+        String input = "Compu Group Medical? Austria";
+        this.spy.buildQuestion(input);
+    }
+
+    @Test(expected = InputMismatchException.class)
+    public void buildQuestionWithTooLongInput(){
+        String input = "\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaa\"";
+        this.spy.buildQuestion(input);
     }
 }

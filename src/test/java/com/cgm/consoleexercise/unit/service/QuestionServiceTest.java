@@ -38,7 +38,6 @@ public class QuestionServiceTest {
 
     @Test
     public void addQuestion() {
-        when(this.questionBuilder.setQuestion(any())).thenReturn(this.questionBuilder);
         when(this.questionBuilder.setAnswerBuilder(any())).thenReturn(this.questionBuilder);
         when(this.questionBuilder.buildQuestion(any())).thenReturn(this.questionBuilder);
         when(this.questionBuilder.getQuestion()).thenReturn(this.question);
@@ -46,5 +45,13 @@ public class QuestionServiceTest {
         this.questionService.addQuestion(" ");
 
         verify(this.questionRepository, times(1)).save(any());
+    }
+
+    @Test
+    public void getQuestion(){
+        String input = "input";
+        this.questionService.getQuestion(input);
+
+        verify(this.questionRepository, times(1)).findByQuestion(input);
     }
 }

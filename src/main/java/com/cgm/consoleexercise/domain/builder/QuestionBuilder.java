@@ -19,12 +19,13 @@ public class QuestionBuilder {
     }
 
     public QuestionBuilder buildQuestion(String input) {
-        if (input.contains("?") && input.contains("\"")) {
-            this.question.setQuestion(input.split("\\?")[0]);
+        String question = input.split("\\?")[0];
+        if (input.contains("?") && input.contains("\"") && question.length() <= 255) {
+            this.question.setQuestion(question);
             this.question.setAnswers(
                     this.answerBuilder.setQuestion(this.question)
-                    .buildAnswers(input.split("\\?")[1])
-                    .getAnswers());
+                            .buildAnswers(input.split("\\?")[1])
+                            .getAnswers());
         } else {
             throw new InputMismatchException();
         }

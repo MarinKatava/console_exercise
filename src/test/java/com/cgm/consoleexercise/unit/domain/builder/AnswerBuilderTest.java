@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.InputMismatchException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -43,6 +44,19 @@ public class AnswerBuilderTest {
         assertEquals(this.answers.size(), 3);
     }
 
-//    TODO: cover all other cases
+    @Test
+    public void buildAnswersWithOtherSymbols(){
+        this.spy.buildAnswers("\"123 /*-+ Me\" \"/*-+ 543 You\" \"T/][hey\"");
+        assertEquals(this.answers.size(), 3);
+    }
 
+    @Test(expected = InputMismatchException.class)
+    public void buildAnswersWithTooMuchCharacters(){
+        this.spy.buildAnswers("\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+                "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaa\"");
+//        255 "b" characters and 2 "a" characters
+    }
 }
