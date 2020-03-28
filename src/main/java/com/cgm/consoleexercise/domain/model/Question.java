@@ -21,8 +21,7 @@ public class Question {
     @Column(columnDefinition = "VARCHAR(255)", unique = true)
     private String question;
 
-    @OneToMany(mappedBy = "question",
-            fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "question")
     @Fetch(FetchMode.JOIN)
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     @OrderBy(value = "id ASC")
